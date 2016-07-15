@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src='trans.js'></script>
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    </head>
+    <body>
+
+    <div id="a">
+      <p>A</p>
+      <pre id="log_a">LOG_A</pre>
+      
+      <div id="b">
+        <p>B</p>
+
+        <pre id="log_b">LOG_B</pre>
+
+        <div id="c">
+          <p>C</p>
+          <pre id="log_c">LOG_C</pre>
+          <input type="text" id="input">
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+
+      var a = new Transition({
+        name: 'a',
+        value: 'ss',
+        callback : function(){
+          var el = document.querySelector( '#log_'+this.name);
+          el.innerHTML += '\n' + this.value
+          // console.log( el );
+        }
+      })
+
+      b = a.addChild({
+        name: 'b',
+        value: 'ss',
+        callback : function(){
+          var el = document.querySelector( '#log_'+this.name);
+          el.innerHTML += '\n' + this.value
+          // console.log( el );
+        }
+      })
+      c = b.addChild({
+        name: 'c',
+        value: 'ss',
+        callback : function(){
+          var el = document.querySelector( '#log_'+this.name);
+          el.innerHTML += '\n' + this.value
+          // console.log( el );
+        }
+      })
+
+      document.querySelector('#input').addEventListener( 'keyup', function(event) {
+        var change = ['a', 'b', 'c']
+        
+        function compareRandom(a, b) {
+          return Math.random() - 0.5;
+        }
+        
+        console.log( change.sort(compareRandom)[0], ' change!' );
+        window[ change.sort(compareRandom)[0] ].change( event.target.value );
+      })
+
+    </script>
+
+
+    </body>
+</html>

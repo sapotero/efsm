@@ -31,6 +31,41 @@ PicoMachine.prototype.trigger = function(event) {
   }
 };
 
+var A = new PicoMachine({ name : 'A', initialState : 'new' });
+A.transitionsFor = {
+  confirm : { new: 'confirmed' },
+  ignore  : { new: 'ignored' },
+  reset   : { confirmed: 'new', ignored: 'new' }
+};
+
+var B = new PicoMachine({ name : 'B', initialState : 'new' });
+B.transitionsFor = {
+  confirm : { new: 'confirmed' },
+  ignore  : { new: 'ignored' },
+  reset   : { confirmed: 'new', ignored: 'new' }
+};
+
+var C = new PicoMachine({ name : 'C', initialState : 'new' });
+C.transitionsFor = {
+  confirm : { new: 'confirmed' },
+  ignore  : { new: 'ignored' },
+  reset   : { confirmed: 'new', ignored: 'new' }
+};
+
+var D = new PicoMachine({ name : 'D', initialState : 'new' });
+D.transitionsFor = {
+  confirm : { new: 'confirmed' },
+  ignore  : { new: 'ignored' },
+  reset   : { confirmed: 'new', ignored: 'new' }
+};
+
+var E = new PicoMachine({ name : 'E', initialState : 'new' });
+E.transitionsFor = {
+  confirm : { new: 'confirmed' },
+  ignore  : { new: 'ignored' },
+  reset   : { confirmed: 'new', ignored: 'new' }
+};
+
 
 function Node ( id, fsm ) {
   this.id = id;
@@ -129,47 +164,15 @@ Graph.prototype.sort = function(){
 }
 
 
-
-var A = new PicoMachine({ name : 'A', initialState : 'new' });
-A.transitionsFor = {
-  confirm : { new: 'confirmed' },
-  ignore  : { new: 'ignored' },
-  reset   : { confirmed: 'new', ignored: 'new' } };
-
-var B = new PicoMachine({ name : 'B', initialState : 'new' });
-B.transitionsFor = {
-  confirm : { new: 'confirmed' },
-  ignore  : { new: 'ignored' },
-  reset   : { confirmed: 'new', ignored: 'new' } };
-
-var C = new PicoMachine({ name : 'C', initialState : 'new' });
-C.transitionsFor = {
-  confirm : { new: 'confirmed' },
-  ignore  : { new: 'ignored' },
-  reset   : { confirmed: 'new', ignored: 'new' } };
-
-var D = new PicoMachine({ name : 'D', initialState : 'new' });
-D.transitionsFor = {
-  confirm : { new: 'confirmed' },
-  ignore  : { new: 'ignored' },
-  reset   : { confirmed: 'new', ignored: 'new' } };
-
-var E = new PicoMachine({ name : 'E', initialState : 'new' });
-E.transitionsFor = {
-  confirm : { new: 'confirmed' },
-  ignore  : { new: 'ignored' },
-  reset   : { confirmed: 'new', ignored: 'new' } };
-
-
 var graph = new Graph({
   edges: [
     [ A, B ],
     [ A, C ],
-    [ A, E ],
+    [ A, D ],
     [ B, D ],
     [ C, D ],
     [ C, E ],
-    [ D, E ],
+    // [ D, E ],
   ],
   states: [ 'start', 'stop', 'error' ],
 });
